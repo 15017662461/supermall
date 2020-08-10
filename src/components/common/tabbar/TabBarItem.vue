@@ -54,17 +54,17 @@ export default {
 <style scoped>
 .tab-bar-item {
   flex: 1;
-  height: 1.6rem;
+  height: 60px;
   text-align: center;
-  font-size: .5rem;
+  font-size: 18px;
 }
 
 .tab-bar-item img {
-  width: .8rem;
-  height: .8rem;
-  margin-top: .08rem;
+  width: 30px;
+  height: 30px;
+  margin-top: 3px;
   vertical-align: middle;
-  margin-bottom: .053333rem;
+  margin-bottom: 2px;
 }
 
 .active {

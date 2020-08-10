@@ -45,18 +45,18 @@ export default {
 .tab-control {
   display: flex;
   text-align: center;
-  font-size: 0.4rem;
+  font-size: 15px;
   background-color: #fff;
 }
 
 .tab-control-item {
   flex: 1;
-  height: 1.066667rem;
-  line-height: 1.066667rem;
+  height: 40px;
+  line-height: 40px;
 }
 
 .tab-control-item span{
-  padding: .133333rem;
+  padding: 5px;
 }
 
 .active {
@@ -64,6 +64,6 @@ export default {
 }
 
 .active span {
-  border-bottom: .08rem solid var(--color-tint);
+  border-bottom: 3px solid var(--color-tint);
 }
 </style>

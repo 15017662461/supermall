@@ -3,7 +3,12 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll">
+    <scroll class="content" 
+    ref="scroll" 
+    :probe-type="3" 
+    :pullUpLoad="true" 
+    @scroll="contentScroll" 
+    @pullingUp="loadMore">
       <home-swiper :banners="banners"></home-swiper>
       <!-- <swiper-box :banners="banners"></swiper-box> -->
       <recommend-view :recommends="recommends"></recommend-view>
@@ -72,7 +77,7 @@ export default {
         .then((res) => {
           // console.log(res);
           this.banners = res.data.banner.list;
-          this.recommends = res.data.recommend.list;
+          this.recommends = res.data.recommend.list
         })
         .catch((err) => {
           console.log(err);
@@ -84,6 +89,7 @@ export default {
         this.goods[type].list.push(...res.data.list);
         this.goods[type].page++;
         // console.log(res);
+        this.$refs.scroll.finishPullUp()
       });
     },
     /**
@@ -110,14 +116,18 @@ export default {
     contentScroll(position){
       // console.log(position);
       this.isShowBackTop = (-position.y) > 1000
+    },
+    loadMore(){
+      // console.log("loading");
+      this.getHomeGoods(this.currentType)
     }
   },
   created() {
     this.getHomeMultidata();
     //请求商品数据
-    this.getHomeGoods("pop");
-    this.getHomeGoods("new");
-    this.getHomeGoods("sell");
+    this.getHomeGoods("pop")
+    this.getHomeGoods("new")
+    this.getHomeGoods("sell")
   },
   mounted() {},
 };
