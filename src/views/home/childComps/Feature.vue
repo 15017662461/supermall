@@ -1,0 +1,28 @@
+<template>
+  <div class="feature">
+    <a href="http://act.mogujie.com/zzlx67">
+    <img src="~assets/img/home/recommend_bg.jpg" alt=""></a>
+  </div>
+</template>
+
+<script>
+export default {
+  name:'Feature',
+  components:{},
+  props:{},
+  data(){
+    return {
+    }
+  },
+  watch:{},
+  computed:{},
+  methods:{},
+  created(){},
+  mounted(){}
+}
+</script>
+<style scoped>
+.feature img{
+  width: 100%;
+}
+</style>

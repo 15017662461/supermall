@@ -1,6 +1,8 @@
 import Vue from 'vue'
+// import Cube from 'cube-ui'
 import App from './App.vue'
 import router from './router'
+// import 'amfe-flexible'
 
 (function setRem() {
   document.documentElement.style.fontSize = window.innerWidth / 10 + 'px'
