@@ -30,11 +30,14 @@ export default {
   computed:{},
   methods:{
     scrollTo(x,y,time=300){
-      this.scroll.scrollTo(x,y,time)
+      this.scroll && this.scroll.scrollTo(x,y,time)
     },
     finishPullUp(){
-      this.scroll.finishPullUp()
-    }
+      this.scroll && this.scroll.finishPullUp()
+    },
+    refresh(){
+      this.scroll && this.scroll.refresh()
+    },
   },
   created(){},
   mounted(){
@@ -48,10 +51,12 @@ export default {
       // console.log(position);
       this.$emit('scroll',position)
     })
-    this.scroll.on('pullingUp',() => {
-      // console.log('pullingUp');
-      this.$emit('pullingUp')
-    })
+    if(this.pullUpLoad){
+      this.scroll.on('pullingUp',() => {
+        // console.log(1);
+        this.$emit('pullingUp')
+      })
+    }
   }
 }
 </script>
