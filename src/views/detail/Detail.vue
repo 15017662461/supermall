@@ -68,7 +68,7 @@ export default {
       // itemImgListener:null,
       themeTopYs: [],
       getThemeTopY: null,
-      currentIndex:0
+      currentIndex:0,
     };
   },
   watch: {},
@@ -101,7 +101,17 @@ export default {
       product.price = this.goods.nowPrice
       product.iid = this.iid
       // console.log(product);
-      this.$store.dispatch("addCart",product)
+      this.$store
+      .dispatch("addCart",product)
+      .then((res) => {
+        // this.show = true
+        // this.message = res
+        // setTimeout(() => {
+        //   this.show = false
+        //   this.message = ""
+        // },1500)
+        this.$toast.show(res,1500)
+      })
     }
   },
   created() {
