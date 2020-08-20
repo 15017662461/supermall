@@ -51,7 +51,7 @@ export default {
   left: 50%;
   transform: translate(-50%,-50%);
   padding: 15px 10px;
-  font-size: 18px;
+  font-size: 14px;
   z-index: 999;
 
   background-color: rgba(0, 0, 0, .75);
