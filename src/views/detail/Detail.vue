@@ -23,7 +23,7 @@ import DetailShopInfo from "./childComps/DetailShopInfo";
 import DetailGoodsInfo from "./childComps/DetailGoodsInfo";
 import DetailParamInfo from "./childComps/DetailParamInfo.vue";
 import DetailCommentInfo from "./childComps/DetailCommentInfo";
-import DetailBottomBar from "./childComps/DetailBottomBar"
+import DetailBottomBar from "./childComps/DetailBottomBar";
 
 import Scroll from "common/scroll/Scroll";
 import GoodsList from "components/content/goods/GoodsList";
@@ -36,7 +36,7 @@ import {
   getRecommend,
 } from "network/detail";
 import { debounce } from "../../common/utils";
-import { itemListenerMixin,backTopMixin } from "../../common/mixin";
+import { itemListenerMixin, backTopMixin } from "../../common/mixin";
 
 export default {
   name: "Detail",
@@ -52,7 +52,7 @@ export default {
     GoodsList,
     DetailBottomBar,
   },
-  mixins: [itemListenerMixin,backTopMixin],
+  mixins: [itemListenerMixin, backTopMixin],
   props: {},
   data() {
     return {
@@ -68,7 +68,7 @@ export default {
       // itemImgListener:null,
       themeTopYs: [],
       getThemeTopY: null,
-      currentIndex:0,
+      currentIndex: 0,
     };
   },
   watch: {},
@@ -84,35 +84,38 @@ export default {
     contentScroll(position) {
       const positionY = -position.y;
       const length = this.themeTopYs.length;
-      for(let i = 0;i <length - 1;i ++){
-        if(this.currentIndex !== i && ((i < length - 1 && positionY >= this.themeTopYs[i] && positionY < this.themeTopYs[i + 1]))){
-          this.currentIndex = i
-          this.$refs.nav.currentIndex = this.currentIndex
+      for (let i = 0; i < length - 1; i++) {
+        if (
+          this.currentIndex !== i &&
+          i < length - 1 &&
+          positionY >= this.themeTopYs[i] &&
+          positionY < this.themeTopYs[i + 1]
+        ) {
+          this.currentIndex = i;
+          this.$refs.nav.currentIndex = this.currentIndex;
         }
       }
       this.isShowBackTop = -position.y > 1000;
     },
-    addToCart(){
+    addToCart() {
       // console.log("添加到购物车");
-      const product = {}
-      product.image = this.topImages[0]
-      product.title = this.goods.title
-      product.desc = this.goods.desc
-      product.price = this.goods.nowPrice
-      product.iid = this.iid
+      const product = {};
+      product.image = this.topImages[0];
+      product.title = this.goods.title;
+      product.desc = this.goods.desc;
+      product.price = this.goods.nowPrice;
+      product.iid = this.iid;
       // console.log(product);
-      this.$store
-      .dispatch("addCart",product)
-      .then((res) => {
+      this.$store.dispatch("addCart", product).then((res) => {
         // this.show = true
         // this.message = res
         // setTimeout(() => {
         //   this.show = false
         //   this.message = ""
         // },1500)
-        this.$toast.show(res,1500)
-      })
-    }
+        this.$toast.show(res, 1500);
+      });
+    },
   },
   created() {
     //保存传递过来的iid
@@ -149,8 +152,7 @@ export default {
         this.themeTopYs.push(this.$refs.param.$el.offsetTop);
         this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
         this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
-        this.themeTopYs.push(Number.MAX_VALUE)
-        // console.log(this.themeTopYs);
+        this.themeTopYs.push(Number.MAX_VALUE);
       }, 200);
     });
 
