@@ -21,12 +21,17 @@ Vue.use(toast)
 
 FastClick.attach(document.body)
 
+
 Vue.use(VueLazyLoad,{
   loading:require('./assets/img/common/placeholder.png')
 })
 
-new Vue({
+const app = new Vue({
   router,
-  render: h => h(App),
+  render: (h) => {console.log(h);return h(App)},   //h返回一个createElement（）的结果,二createElement的结果就是VNode
   store
-}).$mount('#app')
+})
+app.$mount('#app')
+
+
+

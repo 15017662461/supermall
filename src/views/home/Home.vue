@@ -49,6 +49,8 @@ import { getHomeMultidata, getHomeGoods } from "network/home";
 import { debounce, throttle } from "../../common/utils";
 import { itemListenerMixin,backTopMixin } from "../../common/mixin";
 
+
+
 export default {
   name: "Home",
   components: {
@@ -164,6 +166,7 @@ export default {
     this.saveY = this.$refs.scroll.scroll.y;
     // 关闭事件监听
     this.$bus.$off("itemImageLoad", this.itemImgListener);
+    console.log(NavBar)
   },
 };
 </script>
